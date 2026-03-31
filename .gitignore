@@ -1,0 +1,17 @@
+# VS Code settings with token — never commit after adding token
+.vscode/settings.json
+
+# Sensitive files
+.env
+*.token
+
+# Brand assets (large files)
+brand/*.pdf
+brand/*.woff
+brand/*.woff2
+brand/*.otf
+brand/*.ttf
+
+# OS files
+.DS_Store
+Thumbs.db
