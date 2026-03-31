@@ -1,0 +1,44 @@
+[
+  {
+    "name": "headline",
+    "label": "Headline",
+    "type": "text",
+    "default": "Event Title"
+  },
+  {
+    "name": "subheadline",
+    "label": "Subheadline",
+    "type": "text",
+    "default": "Date · Location · Duration"
+  },
+  {
+    "name": "meta_info",
+    "label": "Meta Info (date, location, etc.)",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "cta_text",
+    "label": "CTA Button Text",
+    "type": "text",
+    "default": "Register Now"
+  },
+  {
+    "name": "cta_url",
+    "label": "CTA Button URL",
+    "type": "link",
+    "default": { "url": { "href": "#form", "type": "EXTERNAL" }, "open_in_new_tab": false }
+  },
+  {
+    "name": "show_accent_bar",
+    "label": "Show Green Accent Bar",
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "name": "background_color",
+    "label": "Background Color",
+    "type": "color",
+    "default": { "r": 0, "g": 0, "b": 0, "a": 100 }
+  }
+]

@@ -1,6 +1,9 @@
 # VS Code settings with token — never commit after adding token
 .vscode/settings.json
 
+# HubSpot CLI config with credentials — never commit after adding credentials
+hubspot.config.yml
+
 # Sensitive files
 .env
 *.token

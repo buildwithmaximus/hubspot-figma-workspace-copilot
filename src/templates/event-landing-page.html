@@ -1,0 +1,182 @@
+<!--
+  Template: Event Campaign Landing Page
+  Campaign: Event — Webinars, Conferences, Workshops
+  Portal: Deloitte Israel | Marketing Hub Enterprise | EU1
+  Author: Natan Yagodaev, Head of MarTech
+  Version: 1.0
+  Go-Live: May 2, 2026
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ content.html_title }}</title>
+  <meta name="description" content="{{ content.meta_description }}">
+  {{ standard_header_includes }}
+  <link rel="stylesheet" href="{{ get_asset_url('../../css/deloitte-theme.css') }}">
+</head>
+<body class="deloitte-template deloitte-template--event">
+
+  {# ========================================
+     GLOBAL HEADER
+     ======================================== #}
+  {% global_partial path="../../partials/deloitte-header.html" %}
+
+  {# ========================================
+     MAIN CONTENT — Drag & Drop Area
+     Team can add/remove/rearrange sections here
+     ======================================== #}
+  {% dnd_area "main_content" label="Page Content" %}
+
+    {# ---- HERO SECTION (Variant A — Dark, Centered) ---- #}
+    {% dnd_section
+      background_color={{ "r": 0, "g": 0, "b": 0, "a": 1 }}
+      padding={{ "top": 100, "bottom": 100, "left": 24, "right": 24 }}
+      label="Hero Section"
+    %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module "hero"
+            path="@modules/deloitte-hero-a"
+            headline="[Event Title]"
+            subheadline="[Date] · [Location] · [Duration]"
+            cta_text="Register Now"
+            show_accent_bar=true
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- EVENT DETAILS SECTION ---- #}
+    {% dnd_section
+      background_color={{ "r": 255, "g": 255, "b": 255, "a": 1 }}
+      padding={{ "top": 80, "bottom": 80, "left": 24, "right": 24 }}
+      label="Event Details"
+    %}
+      {% dnd_column width=8 offset=2 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<h2>About This Event</h2><p>[Short description of the event — goals, what attendees will learn, who it's for.]</p>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- AGENDA SECTION ---- #}
+    {% dnd_section
+      background_color={{ "r": 245, "g": 245, "b": 245, "a": 1 }}
+      padding={{ "top": 80, "bottom": 80, "left": 24, "right": 24 }}
+      label="Agenda"
+    %}
+      {% dnd_column width=8 offset=2 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<h2>Agenda</h2>
+            <div class='deloitte-agenda'>
+              <div class='deloitte-agenda__item'>
+                <span class='deloitte-agenda__time'>09:00</span>
+                <div><p class='deloitte-agenda__topic'>[Session Title]</p><p class='deloitte-agenda__desc'>[Short description]</p></div>
+              </div>
+              <div class='deloitte-agenda__item'>
+                <span class='deloitte-agenda__time'>10:00</span>
+                <div><p class='deloitte-agenda__topic'>[Session Title]</p><p class='deloitte-agenda__desc'>[Short description]</p></div>
+              </div>
+              <div class='deloitte-agenda__item'>
+                <span class='deloitte-agenda__time'>11:00</span>
+                <div><p class='deloitte-agenda__topic'>[Break]</p></div>
+              </div>
+            </div>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- SPEAKERS SECTION ---- #}
+    {% dnd_section
+      background_color={{ "r": 255, "g": 255, "b": 255, "a": 1 }}
+      padding={{ "top": 80, "bottom": 80, "left": 24, "right": 24 }}
+      label="Speakers"
+    %}
+      {% dnd_column width=10 offset=1 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<h2 style='text-align:center;margin-bottom:48px;'>Speakers</h2>
+            <div class='deloitte-speakers'>
+              <div class='deloitte-speaker-card'>
+                <div class='deloitte-speaker-card__photo'></div>
+                <p class='deloitte-speaker-card__name'>[Speaker Name]</p>
+                <p class='deloitte-speaker-card__title'>[Title] · [Organization]</p>
+              </div>
+              <div class='deloitte-speaker-card'>
+                <div class='deloitte-speaker-card__photo'></div>
+                <p class='deloitte-speaker-card__name'>[Speaker Name]</p>
+                <p class='deloitte-speaker-card__title'>[Title] · [Organization]</p>
+              </div>
+              <div class='deloitte-speaker-card'>
+                <div class='deloitte-speaker-card__photo'></div>
+                <p class='deloitte-speaker-card__name'>[Speaker Name]</p>
+                <p class='deloitte-speaker-card__title'>[Title] · [Organization]</p>
+              </div>
+            </div>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- REGISTRATION FORM SECTION ---- #}
+    {% dnd_section
+      background_color={{ "r": 249, "g": 249, "b": 249, "a": 1 }}
+      padding={{ "top": 80, "bottom": 80, "left": 24, "right": 24 }}
+      label="Registration Form"
+    %}
+      {% dnd_column width=6 offset=3 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<h2 style='text-align:center;margin-bottom:8px;'>Register for the Event</h2><p style='text-align:center;margin-bottom:32px;'>Secure your spot — spots are limited.</p>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          <div class="deloitte-form-wrapper">
+            {% dnd_module path="@hubspot/form"
+              form_id=""
+              response_type="inline"
+              message="<h3>You're registered!</h3><p>Check your email for confirmation.</p>"
+            %}{% end_dnd_module %}
+          </div>
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- SOCIAL PROOF SECTION ---- #}
+    {% dnd_section
+      background_color={{ "r": 245, "g": 245, "b": 245, "a": 1 }}
+      padding={{ "top": 60, "bottom": 60, "left": 24, "right": 24 }}
+      label="Social Proof"
+    %}
+      {% dnd_column width=10 offset=1 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<p style='text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#53565A;margin-bottom:24px;'>Past Attendees Include</p>
+            <div style='display:flex;justify-content:center;gap:40px;align-items:center;flex-wrap:wrap;'>
+              <div style='width:120px;height:40px;background:#D0D0CE;border-radius:4px;'></div>
+              <div style='width:120px;height:40px;background:#D0D0CE;border-radius:4px;'></div>
+              <div style='width:120px;height:40px;background:#D0D0CE;border-radius:4px;'></div>
+              <div style='width:120px;height:40px;background:#D0D0CE;border-radius:4px;'></div>
+            </div>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+
+  {# ========================================
+     GLOBAL FOOTER
+     ======================================== #}
+  {% global_partial path="../../partials/deloitte-footer.html" %}
+
+  {{ standard_footer_includes }}
+</body>
+</html>

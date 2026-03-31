@@ -1,100 +1,115 @@
-# HubSpot Figma Workspace — GitHub Copilot Edition
-## Deloitte Israel | MarTech Migration | Go-Live: May 2, 2026
+# HubSpot Local Dev Workspace — Deloitte Israel
+## Marketing Hub Enterprise | EU1 | Go-Live: May 2, 2026
 
-This workspace is optimized for **GitHub Copilot agents inside VS Code**.
+VS Code workspace for building HubSpot landing page templates using the HubSpot CLI.
+Optimized for GitHub Copilot agents.
+
+---
+
+## What This Is
+
+Real HubSpot templates (HTML + HubL) that sync directly to your Design Manager via the HubSpot CLI.
+When the team creates a new landing page in HubSpot, they select your template and get a fully structured, Deloitte-branded page ready to fill with content.
 
 ---
 
 ## Setup Checklist
 
-### Step 1 — Clone & Open
+### Step 1 — Install dependencies
 ```bash
-git clone https://github.com/buildwithmaximus/hubspot-figma-workspace-copilot.git
-cd hubspot-figma-workspace-copilot
-code .
+npm install -g @hubspot/cli @figma/mcp-server
 ```
 
-### Step 2 — Install GitHub Copilot
-- Install **GitHub Copilot** extension in VS Code
-- Install **GitHub Copilot Chat** extension
-- Sign in with your GitHub account (company account)
+### Step 2 — Configure HubSpot CLI
+Open `hubspot.config.yml` and add:
+- Your Portal ID (from app-eu1.hubspot.com → account name → top right)
+- Your Personal Access Key (app-eu1.hubspot.com/personal-access-key)
 
-### Step 3 — Install Figma MCP
+### Step 3 — Authenticate
 ```bash
-npm install -g @figma/mcp-server
+hs auth
+hs whoami
 ```
 
-### Step 4 — Add Your Figma Token
-1. Go to figma.com → Settings → Personal access tokens → Generate new token
-2. Open `.vscode/settings.json`
-3. Replace `YOUR_FIGMA_TOKEN_HERE` with your actual token
+### Step 4 — Configure Figma MCP
+Open `.vscode/settings.json` → add your Figma token
 
-> ⚠️ `.vscode/settings.json` is gitignored after you add your token — it will not be committed.
+### Step 5 — Collect brand assets
+See `brand/brand-checklist.md`
 
-### Step 5 — Create Your Figma File
-1. Create a new Figma project: **"HubSpot Campaign Designs — Deloitte Israel"**
-2. Duplicate HubSpot UI Kit from Figma Community (see `references/hubspot-ui-kit.md`)
-3. Save your Figma file URL
-
-### Step 6 — Test Copilot + MCP
-Open Copilot Chat in VS Code and type:
-```
-@workspace List my Figma files
-```
-If it returns your files — you're connected ✅
-
----
-
-## How to Use Copilot in This Project
-
-### Always include context in your prompts:
-```
-#file:PROJECT-CONTEXT.md #file:campaign-specs/event-campaign.md
-Create the Event landing page desktop frame in Figma
-```
-
-### Use agent mode for multi-step tasks:
-```
-@workspace #file:PROJECT-CONTEXT.md
-Generate all frames for the Event Campaign page in Figma:
-landing page desktop, landing page mobile, form spec, and all 4 email templates
-```
-
-### Reference naming conventions:
-```
-#file:references/figma-naming-conventions.md
-Follow the naming conventions and create the Webinar form spec frame
+### Step 6 — Start developing
+```bash
+# Watch mode — auto-syncs every save to Design Manager
+hs watch src/ @
 ```
 
 ---
 
-## File Structure
+## Project Structure
 
 ```
 hubspot-figma-workspace-copilot/
 ├── .github/
-│   └── copilot-instructions.md   ← Auto-loaded by Copilot every session
+│   └── copilot-instructions.md    ← Auto-loaded by Copilot every session
 ├── .vscode/
-│   └── settings.json             ← Figma MCP config (add your token here)
-├── brand/
-│   └── brand-checklist.md        ← Brand assets to collect
-├── campaign-specs/               ← Individual campaign markdown files
+│   └── settings.json              ← Figma MCP config
+├── hubspot.config.yml             ← HubSpot CLI config (add your credentials)
+├── src/
+│   ├── templates/                 ← Landing page HTML/HubL templates
+│   │   ├── event-landing-page.html
+│   │   ├── webinar-landing-page.html     (coming next)
+│   │   ├── newsletter-signup.html        (coming next)
+│   │   └── digital-asset-landing-page.html (coming next)
+│   ├── modules/                   ← Custom reusable modules
+│   │   ├── deloitte-hero-a/       ← Dark, centered (Event)
+│   │   ├── deloitte-hero-b/       ← Split layout (Digital Asset, Newsletter)
+│   │   └── deloitte-hero-c/       ← Image overlay (Webinar)
+│   ├── partials/                  ← Global header + footer
+│   └── css/
+│       └── deloitte-theme.css     ← Full Deloitte design system
+├── campaign-specs/                ← Campaign content reference
 ├── references/
-│   ├── figma-naming-conventions.md
-│   ├── figma-mcp-setup.md
-│   ├── hubspot-ui-kit.md
-│   └── prompting-guide-copilot.md
-├── PROJECT-CONTEXT.md            ← Full project context (reference in prompts)
-└── README.md
+│   ├── hubspot-cli-setup.md       ← CLI install + auth guide
+│   ├── hubl-basics.md             ← HubL syntax reference for Copilot
+│   ├── hubspot-modules-lp.md      ← Module anatomy reference
+│   ├── hubspot-modules-email.md   ← Email module reference
+│   ├── design-decisions.md        ← Colors, spacing, hero variants
+│   └── figma-naming-conventions.md
+├── brand/
+│   └── brand-checklist.md
+└── PROJECT-CONTEXT.md             ← Full campaign context for Copilot
 ```
 
 ---
 
-## Key Difference from Claude Code Version
+## Templates Built
 
-| | This repo (Copilot) | Claude Code version |
-|--|--|--|
-| Context file | `.github/copilot-instructions.md` (auto-loaded) | `CLAUDE.md` (auto-loaded) |
-| MCP config | `.vscode/settings.json` | `.mcp.json` |
-| Prompt style | `#file:` and `@workspace` | Natural language |
-| Context loading | Auto + explicit `#file:` | Auto via CLAUDE.md |
+| Template | Status | Hero Variant |
+|----------|--------|-------------|
+| Event Landing Page | ✅ Done | Variant A (dark, centered) |
+| Webinar Landing Page | 🔜 Next | Variant C (image overlay) |
+| Newsletter Signup | 🔜 Next | Variant B (split layout) |
+| Digital Asset Landing Page | 🔜 Next | Variant B (split layout) |
+
+---
+
+## How to Use in HubSpot
+
+1. Run `hs watch src/ @` to sync templates
+2. Go to **Marketing → Landing Pages → Create**
+3. Click **Choose a template → My Templates**
+4. Select a Deloitte template
+5. Opens in drag-and-drop editor — fill in your content
+6. Publish
+
+---
+
+## Key Copilot Prompts
+
+```
+#file:PROJECT-CONTEXT.md #file:references/hubl-basics.md #file:references/design-decisions.md
+
+Create the Webinar landing page template at src/templates/webinar-landing-page.html
+Use Variant C hero (full-width image overlay with countdown timer section below)
+Follow the same structure as event-landing-page.html
+```
