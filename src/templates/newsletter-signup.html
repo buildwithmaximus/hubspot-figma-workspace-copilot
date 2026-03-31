@@ -1,0 +1,157 @@
+<!--
+  Template: Newsletter Signup Page
+  Campaign: Newsletter — Regular content distribution to subscribers
+  Portal: Deloitte Israel | Marketing Hub Enterprise | EU1
+  Author: Natan Yagodaev, Head of MarTech
+  Version: 1.0
+  Go-Live: May 2, 2026
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ content.html_title }}</title>
+  <meta name="description" content="{{ content.meta_description }}">
+  {{ standard_header_includes }}
+  <link rel="stylesheet" href="{{ get_asset_url('../../css/deloitte-theme.css') }}">
+  <style>
+    .deloitte-value-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .deloitte-value-card {
+      padding: 24px;
+      background: var(--deloitte-white);
+      border: 1px solid var(--deloitte-grey-light);
+      border-radius: var(--radius-md);
+      border-top: 3px solid var(--deloitte-green);
+    }
+    .deloitte-value-card__title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--deloitte-black);
+      margin-bottom: 8px;
+    }
+    .deloitte-value-card__desc {
+      font-size: 14px;
+      color: var(--deloitte-grey-dark);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .deloitte-privacy {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 16px;
+      background: var(--deloitte-grey-bg);
+      border-radius: var(--radius-sm);
+      margin-top: 16px;
+    }
+    .deloitte-privacy__icon { color: var(--deloitte-green); flex-shrink: 0; margin-top: 2px; }
+    .deloitte-privacy p { font-size: 12px; color: var(--deloitte-grey-dark); margin: 0; line-height: 1.5; }
+    .deloitte-privacy a { color: var(--deloitte-green); }
+
+    @media (max-width: 600px) {
+      .deloitte-value-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="deloitte-template deloitte-template--newsletter">
+
+  {% global_partial path="../../partials/deloitte-header.html" %}
+
+  {% dnd_area "main_content" label="Page Content" %}
+
+    {# ---- HERO SECTION (Variant B — Split Layout) ---- #}
+    {% dnd_section
+      background_color={{ "r": 245, "g": 245, "b": 245, "a": 1 }}
+      padding={{ "top": 0, "bottom": 0, "left": 0, "right": 0 }}
+      label="Hero Section"
+    %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module "hero"
+            path="@modules/deloitte-hero-b"
+            headline="Stay Informed on What Matters"
+            subheadline="Expert insights, market trends, and exclusive content — delivered to your inbox."
+            cta_text="Subscribe Now"
+            show_accent_bar=true
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- VALUE PROPOSITION ---- #}
+    {% dnd_section
+      background_color={{ "r": 255, "g": 255, "b": 255, "a": 1 }}
+      padding={{ "top": 80, "bottom": 80, "left": 24, "right": 24 }}
+      label="What You'll Get"
+    %}
+      {% dnd_column width=8 offset=2 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<h2 style='text-align:center;margin-bottom:8px;'>What You'll Get</h2>
+            <p style='text-align:center;color:#53565A;margin-bottom:0;'>Join thousands of professionals who rely on our insights every week.</p>
+            <div class='deloitte-value-grid'>
+              <div class='deloitte-value-card'>
+                <p class='deloitte-value-card__title'>Industry Updates</p>
+                <p class='deloitte-value-card__desc'>The latest trends and developments in your industry, curated by Deloitte experts.</p>
+              </div>
+              <div class='deloitte-value-card'>
+                <p class='deloitte-value-card__title'>Expert Insights</p>
+                <p class='deloitte-value-card__desc'>Analysis and commentary from our senior partners and thought leaders.</p>
+              </div>
+              <div class='deloitte-value-card'>
+                <p class='deloitte-value-card__title'>Upcoming Events</p>
+                <p class='deloitte-value-card__desc'>Early access to webinars, conferences, and exclusive roundtables.</p>
+              </div>
+              <div class='deloitte-value-card'>
+                <p class='deloitte-value-card__title'>Exclusive Content</p>
+                <p class='deloitte-value-card__desc'>Reports, whitepapers, and guides available only to subscribers.</p>
+              </div>
+            </div>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- SIGNUP FORM ---- #}
+    {% dnd_section
+      background_color={{ "r": 134, "g": 188, "b": 37, "a": 0.06 }}
+      padding={{ "top": 80, "bottom": 80, "left": 24, "right": 24 }}
+      label="Signup Form"
+    %}
+      {% dnd_column width=5 offset=3.5 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<h2 style='text-align:center;margin-bottom:8px;'>Subscribe to Our Newsletter</h2>
+                  <p style='text-align:center;color:#53565A;margin-bottom:32px;'>Free. Cancel anytime. No spam.</p>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          <div class="deloitte-form-wrapper">
+            {% dnd_module path="@hubspot/form"
+              form_id=""
+              response_type="inline"
+              message="<h3 style='color:#86BC25;'>✓ You're subscribed!</h3><p>Thank you. Check your inbox for a welcome email.</p>"
+            %}{% end_dnd_module %}
+            <div class="deloitte-privacy">
+              <span class="deloitte-privacy__icon">🔒</span>
+              <p>Your data is safe with us. We never share your information with third parties.
+              You can <a href="#">unsubscribe</a> at any time. Read our <a href="#">Privacy Policy</a>.</p>
+            </div>
+          </div>
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+
+  {% global_partial path="../../partials/deloitte-footer.html" %}
+  {{ standard_footer_includes }}
+</body>
+</html>

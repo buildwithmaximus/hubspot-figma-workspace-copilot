@@ -1,0 +1,24 @@
+<!--
+  Global Footer — Deloitte Israel
+  Used on all landing page templates
+-->
+<footer class="deloitte-footer">
+  <div class="deloitte-footer__inner">
+    <a href="https://www2.deloitte.com/il/en.html">
+      <img src="{{ get_asset_url('../../assets/deloitte-logo-white.svg') }}"
+           alt="Deloitte"
+           class="deloitte-footer__logo"
+           width="100"
+           height="28">
+    </a>
+    <ul class="deloitte-footer__links">
+      <li><a href="https://www2.deloitte.com/il/en/legal/privacy.html">Privacy</a></li>
+      <li><a href="https://www2.deloitte.com/il/en/legal/terms-of-use.html">Terms of Use</a></li>
+      <li><a href="https://www2.deloitte.com/il/en/pages/about-deloitte/topics/contact-us.html">Contact Us</a></li>
+    </ul>
+    <div class="deloitte-footer__legal">
+      <p>© {{ content.publish_date|datetimeformat('%Y') }} Deloitte Touche Tohmatsu Limited. All rights reserved.</p>
+      <p>Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited, a UK private company limited by guarantee ("DTTL"), its network of member firms, and their related entities.</p>
+    </div>
+  </div>
+</footer>

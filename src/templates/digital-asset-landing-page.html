@@ -1,0 +1,205 @@
+<!--
+  Template: Digital Asset Campaign Landing Page
+  Campaign: Digital Asset — Gated content (whitepapers, reports, guides)
+  Portal: Deloitte Israel | Marketing Hub Enterprise | EU1
+  Author: Natan Yagodaev, Head of MarTech
+  Version: 1.0
+  Go-Live: May 2, 2026
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ content.html_title }}</title>
+  <meta name="description" content="{{ content.meta_description }}">
+  {{ standard_header_includes }}
+  <link rel="stylesheet" href="{{ get_asset_url('../../css/deloitte-theme.css') }}">
+  <style>
+    /* Two-column gated layout */
+    .deloitte-gated {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      gap: 48px;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: var(--spacing-xl) var(--spacing-md);
+      align-items: start;
+    }
+    .deloitte-gated__form {
+      position: sticky;
+      top: 90px;
+    }
+    .deloitte-asset-cover {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--deloitte-grey-light);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--deloitte-grey-dark);
+      border: 1px solid var(--deloitte-grey-light);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      margin-bottom: 24px;
+    }
+    .deloitte-bullets { list-style: none; padding: 0; margin: 0 0 24px; }
+    .deloitte-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--deloitte-grey-dark);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--deloitte-grey-light);
+      line-height: 1.5;
+    }
+    .deloitte-bullets li::before {
+      content: '✓';
+      color: var(--deloitte-green);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .deloitte-download-count {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--deloitte-grey-dark);
+      margin-bottom: 16px;
+    }
+    .deloitte-download-count strong { color: var(--deloitte-green); }
+    @media (max-width: 768px) {
+      .deloitte-gated { grid-template-columns: 1fr; }
+      .deloitte-gated__form { position: static; }
+    }
+  </style>
+</head>
+<body class="deloitte-template deloitte-template--digital-asset">
+
+  {% global_partial path="../../partials/deloitte-header.html" %}
+
+  {% dnd_area "main_content" label="Page Content" %}
+
+    {# ---- HERO (Variant B — Split, asset cover right) ---- #}
+    {% dnd_section
+      background_color={{ "r": 245, "g": 245, "b": 245, "a": 1 }}
+      padding={{ "top": 0, "bottom": 0, "left": 0, "right": 0 }}
+      label="Hero Section"
+    %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module "hero"
+            path="@modules/deloitte-hero-b"
+            headline="[Asset Title]"
+            subheadline="[One sentence describing the value of this asset]"
+            cta_text="Download for Free"
+            show_accent_bar=true
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- GATED CONTENT — 2 COLUMN LAYOUT ---- #}
+    {% dnd_section
+      background_color={{ "r": 255, "g": 255, "b": 255, "a": 1 }}
+      padding={{ "top": 0, "bottom": 0, "left": 0, "right": 0 }}
+      label="Gated Content Area"
+    %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<div class='deloitte-gated'>
+
+              <!-- LEFT COLUMN — Asset description -->
+              <div class='deloitte-gated__content'>
+                <h2>What's Inside This [Report / Guide / Whitepaper]</h2>
+                <p>[2-3 sentence description of the asset. Who it's for, what it covers, why it matters.]</p>
+
+                <ul class='deloitte-bullets'>
+                  <li>[Key insight or takeaway #1]</li>
+                  <li>[Key insight or takeaway #2]</li>
+                  <li>[Key insight or takeaway #3]</li>
+                  <li>[Key insight or takeaway #4]</li>
+                  <li>[Key insight or takeaway #5]</li>
+                </ul>
+
+                <!-- Asset preview / cover -->
+                <div class='deloitte-asset-cover'>[Asset Cover Image — 300x400px]</div>
+
+                <!-- Social proof -->
+                <div class='deloitte-download-count'>
+                  <strong>2,400+</strong> professionals have already downloaded this
+                </div>
+              </div>
+
+              <!-- RIGHT COLUMN — Gated form (sticky) -->
+              <div class='deloitte-gated__form'>
+                <div class='deloitte-form-wrapper'>
+                  <h3 style='margin-bottom:8px;'>Get Instant Access</h3>
+                  <p style='font-size:14px;color:#53565A;margin-bottom:24px;'>Fill in the form to download the [report/guide] for free.</p>
+                </div>
+              </div>
+            </div>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- FORM MODULE (inside the right column) ---- #}
+    {% dnd_section
+      background_color={{ "r": 255, "g": 255, "b": 255, "a": 1 }}
+      padding={{ "top": 0, "bottom": 80, "left": 24, "right": 24 }}
+      label="Download Form"
+    %}
+      {% dnd_column width=4 offset=8 %}
+        {% dnd_row %}
+          <div class="deloitte-form-wrapper">
+            {% dnd_module path="@hubspot/form"
+              form_id=""
+              response_type="inline"
+              message="<h3 style='color:#86BC25;'>✓ Download ready!</h3><p>Check your email — we've sent you the download link.</p>"
+            %}{% end_dnd_module %}
+          </div>
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- SOCIAL PROOF / RELATED CONTENT ---- #}
+    {% dnd_section
+      background_color={{ "r": 245, "g": 245, "b": 245, "a": 1 }}
+      padding={{ "top": 64, "bottom": 64, "left": 24, "right": 24 }}
+      label="Related Content"
+    %}
+      {% dnd_column width=8 offset=2 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<h3 style='text-align:center;margin-bottom:32px;'>You Might Also Like</h3>
+            <div style='display:grid;grid-template-columns:repeat(3,1fr);gap:20px;'>
+              <div style='background:#fff;border:1px solid #D0D0CE;border-radius:8px;padding:20px;'>
+                <div style='height:120px;background:#D0D0CE;border-radius:4px;margin-bottom:12px;'></div>
+                <p style='font-size:14px;font-weight:700;margin:0;'>[Related Asset Title]</p>
+              </div>
+              <div style='background:#fff;border:1px solid #D0D0CE;border-radius:8px;padding:20px;'>
+                <div style='height:120px;background:#D0D0CE;border-radius:4px;margin-bottom:12px;'></div>
+                <p style='font-size:14px;font-weight:700;margin:0;'>[Related Asset Title]</p>
+              </div>
+              <div style='background:#fff;border:1px solid #D0D0CE;border-radius:8px;padding:20px;'>
+                <div style='height:120px;background:#D0D0CE;border-radius:4px;margin-bottom:12px;'></div>
+                <p style='font-size:14px;font-weight:700;margin:0;'>[Related Asset Title]</p>
+              </div>
+            </div>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+
+  {% global_partial path="../../partials/deloitte-footer.html" %}
+  {{ standard_footer_includes }}
+</body>
+</html>

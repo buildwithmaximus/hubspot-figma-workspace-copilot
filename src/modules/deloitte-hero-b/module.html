@@ -1,0 +1,27 @@
+<section class="deloitte-hero deloitte-hero--variant-b">
+  <div class="deloitte-hero__content">
+    {% if module.show_accent_bar %}
+      <div class="deloitte-hero__accent"></div>
+    {% endif %}
+    <h1 class="deloitte-hero__headline">{{ module.headline }}</h1>
+    {% if module.subheadline %}
+      <p class="deloitte-hero__subheadline">{{ module.subheadline }}</p>
+    {% endif %}
+    {% if module.body_text %}
+      <div class="deloitte-hero__body">{{ module.body_text }}</div>
+    {% endif %}
+    <a href="{{ module.cta_url.url.href }}"
+       class="deloitte-btn deloitte-btn--primary"
+       {% if module.cta_url.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+      {{ module.cta_text }}
+    </a>
+  </div>
+  {% if module.image.src %}
+    <img class="deloitte-hero__image"
+         src="{{ module.image.src }}"
+         alt="{{ module.image.alt }}"
+         loading="eager">
+  {% else %}
+    <div class="deloitte-hero__image deloitte-hero__image--placeholder"></div>
+  {% endif %}
+</section>

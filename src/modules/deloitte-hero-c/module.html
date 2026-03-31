@@ -1,0 +1,26 @@
+<section class="deloitte-hero deloitte-hero--variant-c">
+  {% if module.background_image.src %}
+    <div class="deloitte-hero__bg"
+         style="background-image: url('{{ module.background_image.src }}');"></div>
+  {% else %}
+    <div class="deloitte-hero__bg deloitte-hero__bg--placeholder"></div>
+  {% endif %}
+  <div class="deloitte-hero__overlay"
+       style="background: rgba(0,0,0,{{ module.overlay_opacity / 100 }});"></div>
+  <div class="deloitte-hero__content">
+    {% if module.show_accent_bar %}
+      <div class="deloitte-hero__accent"></div>
+    {% endif %}
+    <h1 class="deloitte-hero__headline">{{ module.headline }}</h1>
+    {% if module.subheadline %}
+      <p class="deloitte-hero__subheadline" style="color:rgba(255,255,255,0.85);font-size:20px;margin-bottom:32px;">
+        {{ module.subheadline }}
+      </p>
+    {% endif %}
+    <a href="{{ module.cta_url.url.href }}"
+       class="deloitte-btn deloitte-btn--primary"
+       {% if module.cta_url.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+      {{ module.cta_text }}
+    </a>
+  </div>
+</section>

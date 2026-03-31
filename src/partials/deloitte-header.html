@@ -1,0 +1,64 @@
+<!--
+  Global Header — Deloitte Israel
+  Used on all landing page templates
+-->
+<header class="deloitte-header">
+  <div class="deloitte-header__inner">
+    <a href="https://www2.deloitte.com/il/en.html" class="deloitte-header__logo-link">
+      <img src="{{ get_asset_url('../../assets/deloitte-logo.svg') }}"
+           alt="Deloitte"
+           class="deloitte-header__logo"
+           width="120"
+           height="32">
+    </a>
+    <nav class="deloitte-header__nav">
+      <ul class="deloitte-header__nav-list">
+        <li><a href="https://www2.deloitte.com/il/en/services.html">Services</a></li>
+        <li><a href="https://www2.deloitte.com/il/en/insights.html">Insights</a></li>
+        <li><a href="https://www2.deloitte.com/il/en/about.html">About</a></li>
+        <li><a href="https://www2.deloitte.com/il/en/pages/careers/topics/careers.html">Careers</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+.deloitte-header {
+  background: var(--deloitte-white);
+  border-bottom: 3px solid var(--deloitte-green);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.deloitte-header__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.deloitte-header__logo { height: 32px; width: auto; }
+.deloitte-header__logo-link { display: flex; align-items: center; }
+.deloitte-header__nav-list {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.deloitte-header__nav-list a {
+  color: var(--deloitte-grey-dark);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 150ms;
+}
+.deloitte-header__nav-list a:hover { color: var(--deloitte-green); }
+
+@media (max-width: 768px) {
+  .deloitte-header__nav { display: none; }
+}
+</style>

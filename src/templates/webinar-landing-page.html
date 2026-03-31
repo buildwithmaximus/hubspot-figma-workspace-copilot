@@ -1,0 +1,295 @@
+<!--
+  Template: Webinar Campaign Landing Page
+  Campaign: Webinar — Live online webinars with platform integration
+  Portal: Deloitte Israel | Marketing Hub Enterprise | EU1
+  Author: Natan Yagodaev, Head of MarTech
+  Version: 1.0
+  Go-Live: May 2, 2026
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ content.html_title }}</title>
+  <meta name="description" content="{{ content.meta_description }}">
+  {{ standard_header_includes }}
+  <link rel="stylesheet" href="{{ get_asset_url('../../css/deloitte-theme.css') }}">
+  <style>
+    /* Countdown Timer */
+    .deloitte-countdown {
+      background: var(--deloitte-black);
+      padding: 24px;
+      text-align: center;
+      border-top: 1px solid #333;
+    }
+    .deloitte-countdown__label {
+      color: var(--deloitte-grey-light);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    .deloitte-countdown__timer {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+    .deloitte-countdown__unit { text-align: center; }
+    .deloitte-countdown__number {
+      display: block;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--deloitte-green);
+      line-height: 1;
+    }
+    .deloitte-countdown__name {
+      font-size: 11px;
+      color: var(--deloitte-grey-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+    /* Platform info */
+    .deloitte-platform {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--deloitte-grey-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--deloitte-grey-light);
+      margin-top: 24px;
+    }
+    .deloitte-platform__icon {
+      width: 40px; height: 40px;
+      background: var(--deloitte-grey-light);
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+    }
+    .deloitte-platform__label { font-size: 14px; color: var(--deloitte-grey-dark); }
+    .deloitte-platform__name { font-size: 16px; font-weight: 700; color: var(--deloitte-black); }
+  </style>
+</head>
+<body class="deloitte-template deloitte-template--webinar">
+
+  {% global_partial path="../../partials/deloitte-header.html" %}
+
+  {% dnd_area "main_content" label="Page Content" %}
+
+    {# ---- HERO SECTION (Variant C — Image Overlay) ---- #}
+    {% dnd_section
+      background_color={{ "r": 15, "g": 15, "b": 30, "a": 1 }}
+      padding={{ "top": 0, "bottom": 0, "left": 0, "right": 0 }}
+      label="Hero Section"
+    %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module "hero"
+            path="@modules/deloitte-hero-c"
+            headline="[Webinar Title]"
+            subheadline="[Date] · [Time] · [Duration]"
+            cta_text="Register for Webinar"
+            show_accent_bar=true
+            overlay_opacity=60
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- COUNTDOWN TIMER SECTION ---- #}
+    {% dnd_section
+      background_color={{ "r": 0, "g": 0, "b": 0, "a": 1 }}
+      padding={{ "top": 0, "bottom": 0, "left": 0, "right": 0 }}
+      label="Countdown Timer"
+    %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<div class='deloitte-countdown'>
+              <p class='deloitte-countdown__label'>Webinar starts in</p>
+              <div class='deloitte-countdown__timer' id='deloitte-timer'>
+                <div class='deloitte-countdown__unit'>
+                  <span class='deloitte-countdown__number' id='days'>00</span>
+                  <span class='deloitte-countdown__name'>Days</span>
+                </div>
+                <div class='deloitte-countdown__unit'>
+                  <span class='deloitte-countdown__number' id='hours'>00</span>
+                  <span class='deloitte-countdown__name'>Hours</span>
+                </div>
+                <div class='deloitte-countdown__unit'>
+                  <span class='deloitte-countdown__number' id='minutes'>00</span>
+                  <span class='deloitte-countdown__name'>Minutes</span>
+                </div>
+              </div>
+            </div>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- WEBINAR DESCRIPTION ---- #}
+    {% dnd_section
+      background_color={{ "r": 255, "g": 255, "b": 255, "a": 1 }}
+      padding={{ "top": 80, "bottom": 80, "left": 24, "right": 24 }}
+      label="Webinar Description"
+    %}
+      {% dnd_column width=8 offset=2 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<h2>What We'll Cover</h2>
+            <p>[What attendees will discuss, learn, and take away from this webinar.]</p>
+            <ul>
+              <li>[Key topic #1]</li>
+              <li>[Key topic #2]</li>
+              <li>[Key topic #3]</li>
+              <li>[Live Q&A session]</li>
+            </ul>
+            <p><strong>Who should attend:</strong> [Target audience description]</p>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- SPEAKERS / HOSTS ---- #}
+    {% dnd_section
+      background_color={{ "r": 245, "g": 245, "b": 245, "a": 1 }}
+      padding={{ "top": 80, "bottom": 80, "left": 24, "right": 24 }}
+      label="Speakers"
+    %}
+      {% dnd_column width=10 offset=1 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<h2 style='text-align:center;margin-bottom:48px;'>Your Speakers</h2>
+            <div class='deloitte-speakers'>
+              <div class='deloitte-speaker-card'>
+                <div class='deloitte-speaker-card__photo'></div>
+                <p class='deloitte-speaker-card__name'>[Speaker Name]</p>
+                <p class='deloitte-speaker-card__title'>[Title] · [Organization]</p>
+                <p style='font-size:13px;color:#53565A;margin-top:8px;'>[Short bio — 2 sentences max]</p>
+              </div>
+              <div class='deloitte-speaker-card'>
+                <div class='deloitte-speaker-card__photo'></div>
+                <p class='deloitte-speaker-card__name'>[Speaker Name]</p>
+                <p class='deloitte-speaker-card__title'>[Title] · [Organization]</p>
+                <p style='font-size:13px;color:#53565A;margin-top:8px;'>[Short bio — 2 sentences max]</p>
+              </div>
+            </div>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- AGENDA ---- #}
+    {% dnd_section
+      background_color={{ "r": 255, "g": 255, "b": 255, "a": 1 }}
+      padding={{ "top": 80, "bottom": 80, "left": 24, "right": 24 }}
+      label="Agenda"
+    %}
+      {% dnd_column width=8 offset=2 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<h2>Agenda</h2>
+            <div class='deloitte-agenda'>
+              <div class='deloitte-agenda__item'>
+                <span class='deloitte-agenda__time'>00:00</span>
+                <div><p class='deloitte-agenda__topic'>Welcome & Introductions</p></div>
+              </div>
+              <div class='deloitte-agenda__item'>
+                <span class='deloitte-agenda__time'>00:10</span>
+                <div><p class='deloitte-agenda__topic'>[Topic 1]</p><p class='deloitte-agenda__desc'>[Description]</p></div>
+              </div>
+              <div class='deloitte-agenda__item'>
+                <span class='deloitte-agenda__time'>00:30</span>
+                <div><p class='deloitte-agenda__topic'>[Topic 2]</p><p class='deloitte-agenda__desc'>[Description]</p></div>
+              </div>
+              <div class='deloitte-agenda__item'>
+                <span class='deloitte-agenda__time'>00:50</span>
+                <div><p class='deloitte-agenda__topic'>Live Q&A</p></div>
+              </div>
+            </div>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- REGISTRATION FORM ---- #}
+    {% dnd_section
+      background_color={{ "r": 249, "g": 249, "b": 249, "a": 1 }}
+      padding={{ "top": 80, "bottom": 80, "left": 24, "right": 24 }}
+      label="Registration Form"
+    %}
+      {% dnd_column width=6 offset=3 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<h2 style='text-align:center;margin-bottom:8px;'>Save Your Spot</h2>
+                  <p style='text-align:center;margin-bottom:32px;'>Free registration — join us live or watch the recording.</p>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          <div class="deloitte-form-wrapper">
+            {% dnd_module path="@hubspot/form"
+              form_id=""
+              response_type="inline"
+              message="<h3>You're registered!</h3><p>Check your email for the join link and calendar invite.</p>"
+            %}{% end_dnd_module %}
+          </div>
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ---- PLATFORM INFO ---- #}
+    {% dnd_section
+      background_color={{ "r": 255, "g": 255, "b": 255, "a": 1 }}
+      padding={{ "top": 48, "bottom": 48, "left": 24, "right": 24 }}
+      label="Platform Info"
+    %}
+      {% dnd_column width=6 offset=3 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text"
+            html="<div class='deloitte-platform'>
+              <div class='deloitte-platform__icon'></div>
+              <div>
+                <p class='deloitte-platform__label'>This webinar will be hosted on</p>
+                <p class='deloitte-platform__name'>[Zoom / Microsoft Teams / GoToWebinar]</p>
+              </div>
+            </div>
+            <p style='font-size:13px;color:#53565A;text-align:center;margin-top:16px;'>
+              You'll receive the join link in your confirmation email.
+              Please check your audio and internet connection before the event.
+            </p>"
+          %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+
+  {% global_partial path="../../partials/deloitte-footer.html" %}
+
+  <script>
+    // Countdown timer — set your webinar date here
+    // Format: 'YYYY-MM-DDTHH:MM:SS' in your timezone
+    var webinarDate = new Date('[WEBINAR_DATE_ISO]');
+    function updateTimer() {
+      var now = new Date();
+      var diff = webinarDate - now;
+      if (diff <= 0) {
+        document.getElementById('deloitte-timer').innerHTML = '<p style="color:#86BC25;font-size:18px;font-weight:700;">The webinar is live now!</p>';
+        return;
+      }
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      document.getElementById('days').textContent = String(d).padStart(2,'0');
+      document.getElementById('hours').textContent = String(h).padStart(2,'0');
+      document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+    }
+    updateTimer();
+    setInterval(updateTimer, 60000);
+  </script>
+
+  {{ standard_footer_includes }}
+</body>
+</html>

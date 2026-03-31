@@ -1,0 +1,44 @@
+[
+  {
+    "name": "headline",
+    "label": "Headline",
+    "type": "text",
+    "default": "Webinar Title"
+  },
+  {
+    "name": "subheadline",
+    "label": "Subheadline",
+    "type": "text",
+    "default": "Date · Time · Duration"
+  },
+  {
+    "name": "cta_text",
+    "label": "CTA Button Text",
+    "type": "text",
+    "default": "Register for Webinar"
+  },
+  {
+    "name": "cta_url",
+    "label": "CTA Button URL",
+    "type": "link",
+    "default": { "url": { "href": "#form", "type": "EXTERNAL" }, "open_in_new_tab": false }
+  },
+  {
+    "name": "background_image",
+    "label": "Background Image",
+    "type": "image",
+    "default": { "src": "", "alt": "Webinar background" }
+  },
+  {
+    "name": "overlay_opacity",
+    "label": "Overlay Opacity (0-100)",
+    "type": "number",
+    "default": 60
+  },
+  {
+    "name": "show_accent_bar",
+    "label": "Show Green Accent Bar",
+    "type": "boolean",
+    "default": true
+  }
+]

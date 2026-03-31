@@ -1,0 +1,44 @@
+[
+  {
+    "name": "headline",
+    "label": "Headline",
+    "type": "text",
+    "default": "Download the Guide"
+  },
+  {
+    "name": "subheadline",
+    "label": "Subheadline",
+    "type": "text",
+    "default": "What you'll learn from this guide"
+  },
+  {
+    "name": "body_text",
+    "label": "Body Text",
+    "type": "richtext",
+    "default": "<ul><li>Key insight #1</li><li>Key insight #2</li><li>Key insight #3</li></ul>"
+  },
+  {
+    "name": "cta_text",
+    "label": "CTA Button Text",
+    "type": "text",
+    "default": "Download Now"
+  },
+  {
+    "name": "cta_url",
+    "label": "CTA Button URL",
+    "type": "link",
+    "default": { "url": { "href": "#form", "type": "EXTERNAL" }, "open_in_new_tab": false }
+  },
+  {
+    "name": "image",
+    "label": "Right Side Image",
+    "type": "image",
+    "default": { "src": "", "alt": "Asset cover" }
+  },
+  {
+    "name": "show_accent_bar",
+    "label": "Show Green Accent Bar",
+    "type": "boolean",
+    "default": true
+  }
+]

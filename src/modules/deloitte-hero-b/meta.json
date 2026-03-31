@@ -1,0 +1,13 @@
+{
+  "label": "Deloitte Hero B — Split Layout",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Split layout hero — text left, image right. Use for Newsletter and Digital Asset campaigns.",
+  "host_template_types": ["LANDING_PAGE", "PAGE"],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["deloitte", "hero", "newsletter", "digital-asset"],
+  "is_available_for_new_content": true
+}

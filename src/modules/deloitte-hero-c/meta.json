@@ -1,0 +1,13 @@
+{
+  "label": "Deloitte Hero C — Full-Width Image Overlay",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Full-width background image with dark overlay and centered text. Use for Webinar campaigns. Add countdown timer section below.",
+  "host_template_types": ["LANDING_PAGE", "PAGE"],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["deloitte", "hero", "webinar"],
+  "is_available_for_new_content": true
+}
