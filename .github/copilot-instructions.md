@@ -101,11 +101,30 @@ Full campaign details in `campaign-specs/` folder.
 
 ---
 
-## How to Reference Files in Prompts
+## Reference Files — Always Include These
 
-When working with Copilot, always include relevant context:
+| File | When to use |
+|------|-------------|
+| `#file:PROJECT-CONTEXT.md` | Every prompt — full campaign context |
+| `#file:references/hubspot-modules-lp.md` | Building landing pages |
+| `#file:references/hubspot-modules-email.md` | Building email templates |
+| `#file:references/design-decisions.md` | Checking colors, spacing, hero variants |
+| `#file:references/figma-naming-conventions.md` | Creating or naming any frame |
 
+### Minimum context for any prompt:
 ```
-#file:campaign-specs/event-campaign.md Create the Event landing page
-#file:references/figma-naming-conventions.md following the naming conventions
+#file:PROJECT-CONTEXT.md #file:references/design-decisions.md
+[Your instruction here]
+```
+
+### For landing pages:
+```
+#file:PROJECT-CONTEXT.md #file:references/hubspot-modules-lp.md #file:references/design-decisions.md
+Create the [Campaign] landing page desktop frame
+```
+
+### For email templates:
+```
+#file:PROJECT-CONTEXT.md #file:references/hubspot-modules-email.md #file:references/design-decisions.md
+Create the [Campaign] [Email Type] email frame
 ```
